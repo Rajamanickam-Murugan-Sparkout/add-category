@@ -1,0 +1,19 @@
+<form [formGroup]="usingFormArray">
+    <div class="mt-10 container mx-auto flex">
+        <div>
+            <input type="text" formControlName="inputVal" id="item" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-96 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Item name" required />
+            <span *ngIf="usingFormArray.get('inputVal')?.hasError('required') && (usingFormArray.get('inputVal')?.touched || usingFormArray.get('inputVal')?.dirty)" class="text-red-500 text-sm mt-1">new item name required</span>
+        </div>
+        <button type="button" class="ms-2.5" (click)="addItem()">
+            <img width="42" height="42" src="https://img.icons8.com/fluency/48/add--v1.png" alt="add--v1"/>
+        </button>
+    </div>
+    <div formArrayName="items">
+        <div *ngFor="let item of items; let i = index" class="mt-5 container mx-auto flex">
+            <input [formControlName]="i" placeholder="New item" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-96 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  required>
+            <button type="button" class="ms-2.5" (click)="removeItem(i)">
+                <img width="42" height="42" src="https://img.icons8.com/color/48/cancel--v1.png" alt="cancel--v1"/>
+            </button>
+        </div>
+    </div>
+</form>
