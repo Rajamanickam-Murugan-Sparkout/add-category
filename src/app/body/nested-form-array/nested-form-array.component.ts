@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-nested-form-array',
@@ -13,6 +13,7 @@ export class NestedFormArrayComponent {
 
   ngOnInit() {
     this.usingNestedFormArray = this.fb.group({
+      categoryName: ['', Validators.required],
       categories: this.fb.array([],Validators.required)
     });
   }
@@ -23,12 +24,13 @@ export class NestedFormArrayComponent {
 
   addNewCategory(): FormGroup {
     return this.fb.group({
+      categoryName: ['', Validators.required],
       category: this.fb.array([], Validators.required)
     });
   }
 
   addCategory() {
-    this.categories.push(this.addNewCategory());
+      this.categories.push(this.addNewCategory());
   }
 
   removeCategory(categoryIndex: number) {

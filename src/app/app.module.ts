@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormArrayComponent } from './body/form-array/form-array.component';
 import { NestedFormArrayComponent } from './body/nested-form-array/nested-form-array.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './header/navbar/navbar.component';
 
 @NgModule({
@@ -18,7 +18,8 @@ import { NavbarComponent } from './header/navbar/navbar.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
